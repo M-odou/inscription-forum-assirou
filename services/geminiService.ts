@@ -1,6 +1,6 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { MODEL_NAME } from "../constants";
+import { MODEL_NAME } from "../constants.ts";
 
 export const generateWelcomeMessage = async (name: string, company: string): Promise<string> => {
   try {

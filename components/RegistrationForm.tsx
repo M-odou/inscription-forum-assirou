@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-import { RegistrationFormData, Participant } from '../types';
-import { INDUSTRIES, ASSIROU_SERVICES, ASSIROU_FORMATIONS, REFERRAL_SOURCES } from '../constants';
-import { generateWelcomeMessage } from '../services/geminiService';
+import { RegistrationFormData, Participant } from '../types.ts';
+import { INDUSTRIES, ASSIROU_SERVICES, ASSIROU_FORMATIONS, REFERRAL_SOURCES } from '../constants.ts';
+import { generateWelcomeMessage } from '../services/geminiService.ts';
 import { ArrowRight, ArrowLeft, Loader2, Sparkles, Check } from 'lucide-react';
 
 interface Props {

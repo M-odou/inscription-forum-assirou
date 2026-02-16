@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { AppView, Participant } from './types';
-import RegistrationForm from './components/RegistrationForm';
-import TicketSuccess from './components/TicketSuccess';
-import AdminDashboard from './components/AdminDashboard';
-import { fetchParticipants, saveParticipant, updateParticipantCheckIn, verifyAdminCredentials } from './services/supabaseService';
+import { AppView, Participant } from './types.ts';
+import RegistrationForm from './components/RegistrationForm.tsx';
+import TicketSuccess from './components/TicketSuccess.tsx';
+import AdminDashboard from './components/AdminDashboard.tsx';
+import { fetchParticipants, saveParticipant, updateParticipantCheckIn, verifyAdminCredentials } from './services/supabaseService.ts';
 import { Shield, Lock, X, LogIn, Loader2 } from 'lucide-react';
 
 const App: React.FC = () => {
