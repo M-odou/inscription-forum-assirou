@@ -1,0 +1,7 @@
+{
+  "name": "Assirou Sécurité Ticketing",
+  "description": "Premium automated ticketing system for high-level security forums with AI-powered personalized onboarding.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
