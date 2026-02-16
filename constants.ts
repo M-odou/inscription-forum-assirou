@@ -7,32 +7,33 @@ export const COLORS = {
 export const MODEL_NAME = 'gemini-3-flash-preview';
 
 export const INDUSTRIES = [
-  'Cybersécurité',
-  'Défense & Armement',
-  'Intelligence Artificielle',
-  'Infrastructure Critique',
-  'Gouvernement & Secteur Public',
-  'Services Financiers',
-  'Télécommunications',
+  'Sécurité Privée',
+  'Administration Publique',
+  'Commerce & Grande Distribution',
+  'Industrie & Logistique',
+  'Événementiel & Culture',
+  'Santé & Hospitalier',
+  'Bâtiment & Construction',
   'Autre'
 ];
 
 export const ASSIROU_SERVICES = [
   'Audit & Conseil en Sécurité',
-  'Cybersécurité & SOC',
   'Surveillance Physique & Gardiennage',
   'Installation de Systèmes Vidéo',
   'Protection de Hautes Personnalités',
-  'Sécurité Événementielle'
+  'Sécurité Événementielle',
+  'Système de détection et extinction incendie',
+  'Contrôle d\'accès'
 ];
 
 export const ASSIROU_FORMATIONS = [
-  'Formation Cybersécurité Avancée',
-  'Gestion de Crise & Risques',
-  'Secourisme en Milieu Hostile',
-  'Formation Agent de Protection',
-  'Intelligence Économique',
-  'Droit de la Sécurité'
+  'CQP-APS (Certificat Qualification Professionnelle - Agent Prévention Sécurité)',
+  'SSIAP 1 et 2 (Services de Sécurité Incendie et d\'Assistance à Personnes)',
+  'SST (Sauveteur Secouriste du Travail)',
+  'APR (Agent de Protection Rapprochée)',
+  'Agent Stadier',
+  'Agent Securite Hospitalier (ASH)'
 ];
 
 export const REFERRAL_SOURCES = [

@@ -30,14 +30,13 @@ const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onLogout }) 
     if (participants.length === 0) return;
 
     const headers = [
-      "Ticket ID", "Civilite", "Prenom", "Nom", "Email", "Telephone", "Entreprise", 
+      "Ticket ID", "Prenom", "Nom", "Email", "Telephone", "Entreprise", 
       "Fonction", "Industrie", "Type Interet", "Services/Formations Choisis", 
       "Opinion", "Source Forum", "Source Assirou", "Date Inscription", "Statut Presence"
     ];
 
     const rows = participants.map(p => [
       p.ticketId,
-      p.salutation,
       p.firstName,
       p.lastName,
       p.email,
@@ -173,7 +172,7 @@ const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onLogout }) 
                 <tr key={p.id} className="hover:bg-slate-50/30 transition-professional group">
                   <td className="px-6 py-5 font-mono text-[10px] text-brand-gold font-bold">{p.ticketId}</td>
                   <td className="px-6 py-5">
-                    <p className="text-xs font-bold text-brand-navy">{p.salutation} {p.firstName} {p.lastName}</p>
+                    <p className="text-xs font-bold text-brand-navy">{p.firstName} {p.lastName}</p>
                     <p className="text-[9px] text-slate-400 font-medium uppercase tracking-tighter">{p.company || 'Sans structure'}</p>
                   </td>
                   <td className="px-6 py-5">
@@ -245,7 +244,7 @@ const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onLogout }) 
                   <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Identité & Profil</h4>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-xl border border-slate-100">
-                  <DetailField label="Nom Complet" value={`${selectedParticipant.salutation} ${selectedParticipant.firstName} ${selectedParticipant.lastName}`} />
+                  <DetailField label="Nom Complet" value={`${selectedParticipant.firstName} ${selectedParticipant.lastName}`} />
                   <DetailField label="E-mail" value={selectedParticipant.email} />
                   <DetailField label="Téléphone" value={selectedParticipant.phone} />
                   <DetailField label="Organisation" value={selectedParticipant.company || "Non renseigné"} />

@@ -9,7 +9,7 @@ export enum AppView {
 export interface Participant {
   id: string;
   ticketId: string;
-  salutation: 'M.' | 'Mme';
+  salutation: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -29,7 +29,7 @@ export interface Participant {
 }
 
 export interface RegistrationFormData {
-  salutation: 'M.' | 'Mme';
+  salutation: string;
   firstName: string;
   lastName: string;
   email: string;

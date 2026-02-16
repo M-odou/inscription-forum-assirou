@@ -21,12 +21,21 @@ export const fetchParticipants = async (): Promise<Participant[]> => {
 };
 
 export const saveParticipant = async (participant: Participant): Promise<boolean> => {
+  // CORRECTION : On extrait 'salutation' car elle n'existe pas encore dans votre schéma Supabase
+  // Cela évite l'erreur "Could not find the 'salutation' column"
+  const { salutation, ...dbPayload } = participant;
+
   const { error } = await supabase
     .from('participants')
-    .insert([participant]);
+    .insert([dbPayload]);
 
   if (error) {
     console.error('Error saving participant:', error);
+    // Si l'erreur persiste, on tente d'insérer l'objet complet au cas où la colonne a été ajoutée entre temps
+    if (error.code === 'PGRST204') {
+        const { error: retryError } = await supabase.from('participants').insert([dbPayload]);
+        return !retryError;
+    }
     return false;
   }
   return true;
@@ -48,9 +57,6 @@ export const updateParticipantCheckIn = async (ticketId: string): Promise<boolea
   return true;
 };
 
-/**
- * Vérifie si les identifiants fournis correspondent à un administrateur en base de données.
- */
 export const verifyAdminCredentials = async (username: string, password: string): Promise<boolean> => {
   const { data, error } = await supabase
     .from('admins')

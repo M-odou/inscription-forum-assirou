@@ -46,7 +46,6 @@ const App: React.FC = () => {
   const handleCheckIn = async (ticketId: string) => {
     const success = await updateParticipantCheckIn(ticketId);
     if (success) {
-      // Mettre à jour l'état local pour éviter un re-fetch complet
       setParticipants(prev => prev.map(p => 
         p.ticketId === ticketId 
           ? { ...p, checkedIn: true, checkedInAt: new Date().toISOString() } 
@@ -90,29 +89,24 @@ const App: React.FC = () => {
       <header className="bg-white border-b border-slate-100 sticky top-0 z-50 py-4">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div 
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2 cursor-pointer group"
             onClick={() => setCurrentView(AppView.REGISTRATION)}
           >
-            <div className="relative">
-              <Shield className="text-brand-navy w-10 h-10 group-hover:scale-105 transition-transform" />
-              <Shield className="text-brand-gold w-5 h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" />
-            </div>
-            <div className="border-l-2 border-slate-100 pl-4 flex flex-col justify-center">
-              <h1 className="font-brand text-2xl tracking-tight leading-none font-black flex flex-col">
-                <span className="text-brand-navy">Assirou</span>
-                <span className="text-brand-gold -mt-1">Sécurité</span>
-              </h1>
+            <Shield className="text-brand-navy w-6 h-6 group-hover:text-brand-gold transition-colors" />
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-brand text-xl font-black text-brand-navy tracking-tight uppercase">Assirou</span>
+              <span className="font-brand text-xl font-black text-brand-gold tracking-tight uppercase">Sécurité</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
             {isLoading && (
               <div className="flex items-center gap-2 text-slate-300">
                 <Loader2 size={12} className="animate-spin" />
-                <span className="text-[8px] font-bold uppercase tracking-widest text-slate-400">Sync DB...</span>
+                <span className="text-[8px] font-bold uppercase tracking-widest">Sync DB...</span>
               </div>
             )}
             <div className="text-[10px] font-bold text-slate-300 uppercase tracking-widest hidden sm:block">
-              Portail Officiel d'Accréditation
+              Forum des Métiers de la Sécurité 2026
             </div>
           </div>
         </div>
@@ -142,14 +136,13 @@ const App: React.FC = () => {
       </main>
 
       <footer className="py-10 border-t border-slate-50 text-center relative group">
-        <div className="flex flex-col items-center gap-1 opacity-60">
-          <p className="text-brand-navy text-[11px] uppercase tracking-[0.2em] font-black">
-            Assirou Sécurité
-          </p>
-          <p className="text-slate-300 text-[9px] uppercase tracking-widest font-medium">
-            Excellence & Vigilance • Dakar, Sénégal
-          </p>
+        <div className="flex items-center justify-center gap-1.5 mb-2">
+          <span className="text-brand-navy font-bold text-[11px] uppercase tracking-widest">Assirou</span>
+          <span className="text-brand-gold font-bold text-[11px] uppercase tracking-widest">Sécurité</span>
         </div>
+        <p className="text-slate-300 text-[9px] uppercase tracking-[0.2em] font-medium">
+          Excellence & Vigilance • Forum 2026
+        </p>
         
         <button 
           onClick={() => {
