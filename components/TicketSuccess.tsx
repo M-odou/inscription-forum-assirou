@@ -2,8 +2,8 @@
 import React, { useRef, useState } from 'react';
 import { Participant } from '../types';
 import { Download, ShieldCheck, CheckCircle2, Sparkles, Loader2 } from 'lucide-react';
-import html2canvas from 'https://esm.sh/html2canvas';
-import { jsPDF } from 'https://esm.sh/jspdf';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 const QR_URL = "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=";
 
@@ -82,7 +82,6 @@ const TicketSuccess: React.FC<Props> = ({ participant, onNewRegistration }) => {
       </div>
 
       {/* LUXURY BADGE DESIGN */}
-      {/* On utilise un wrapper pour assurer que html2canvas capture tout correctement */}
       <div className="print:m-0 flex justify-center">
         <div 
           ref={badgeRef}
