@@ -3,5 +3,8 @@
   "name": "assirou-ticketing-2026",
   "version": "1.0.0",
   "private": true,
-  "description": "Système de billetterie Assirou Sécurité"
+  "description": "Système de billetterie Assirou Sécurité",
+  "scripts": {
+    "build": "echo 'No build step required for native ESM deployment'"
+  }
 }
