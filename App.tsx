@@ -4,7 +4,7 @@ import { AppView, Participant } from './types.ts';
 import RegistrationForm from './components/RegistrationForm.tsx';
 import TicketSuccess from './components/TicketSuccess.tsx';
 import AdminDashboard from './components/AdminDashboard.tsx';
-import { fetchParticipants, saveParticipant, updateParticipantCheckIn, verifyAdminCredentials } from './services/supabaseService.ts';
+import { fetchParticipants, saveParticipant, updateParticipantCheckIn, verifyAdminCredentials, deleteParticipant } from './services/supabaseService.ts';
 import { Shield, Lock, X, LogIn, Loader2 } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -54,6 +54,19 @@ const App: React.FC = () => {
       return true;
     }
     return false;
+  };
+
+  const handleDeleteParticipant = async (id: string) => {
+    if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce participant définitivement ?")) {
+      return;
+    }
+
+    const success = await deleteParticipant(id);
+    if (success) {
+      setParticipants(prev => prev.filter(p => p.id !== id));
+    } else {
+      alert("Erreur lors de la suppression du participant.");
+    }
   };
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -129,6 +142,7 @@ const App: React.FC = () => {
             <AdminDashboard 
               participants={participants} 
               onCheckIn={handleCheckIn} 
+              onDelete={handleDeleteParticipant}
               onLogout={handleLogout} 
             />
           )}

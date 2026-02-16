@@ -1,17 +1,18 @@
 
 import React, { useMemo, useState } from 'react';
 import { Participant } from '../types';
-import { Users, UserCheck, Shield, Eye, QrCode, CheckCircle2, UserX, LogOut, X, Download, Briefcase, Info, MessageSquare, Compass } from 'lucide-react';
+import { Users, UserCheck, Shield, Eye, QrCode, CheckCircle2, UserX, LogOut, X, Download, Briefcase, Info, MessageSquare, Trash2 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from 'recharts';
 import CheckIn from './CheckIn';
 
 interface Props {
   participants: Participant[];
   onCheckIn: (ticketId: string) => boolean;
+  onDelete: (id: string) => void;
   onLogout: () => void;
 }
 
-const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onLogout }) => {
+const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onDelete, onLogout }) => {
   const [showScanner, setShowScanner] = useState(false);
   const [selectedParticipant, setSelectedParticipant] = useState<Participant | null>(null);
 
@@ -198,6 +199,13 @@ const AdminDashboard: React.FC<Props> = ({ participants, onCheckIn, onLogout }) 
                           <UserCheck size={18} />
                         </button>
                       )}
+                      <button 
+                        onClick={() => onDelete(p.id)}
+                        className="p-2.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100"
+                        title="Supprimer définitivement"
+                      >
+                        <Trash2 size={18} />
+                      </button>
                     </div>
                   </td>
                 </tr>
