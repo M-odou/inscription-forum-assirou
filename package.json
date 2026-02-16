@@ -5,10 +5,6 @@
   "private": true,
   "description": "Système de billetterie Assirou Sécurité",
   "scripts": {
-    "build": "echo 'Static ESM build: No compilation needed'",
-    "install": "echo 'Skipping npm install for ESM-native project'"
-  },
-  "engines": {
-    "node": ">=20.0.0"
+    "build": "echo 'Static ESM deployment...'"
   }
 }
