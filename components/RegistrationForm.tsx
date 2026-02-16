@@ -13,6 +13,7 @@ const RegistrationForm: React.FC<Props> = ({ onComplete }) => {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<RegistrationFormData>({
+    salutation: 'M.',
     firstName: '',
     lastName: '',
     email: '',
@@ -57,7 +58,11 @@ const RegistrationForm: React.FC<Props> = ({ onComplete }) => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     const ticketId = `AS-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-    const welcomeMsg = await generateWelcomeMessage(`${formData.firstName} ${formData.lastName}`, formData.company || "Indépendant");
+    const welcomeMsg = await generateWelcomeMessage(
+      formData.salutation,
+      `${formData.firstName} ${formData.lastName}`, 
+      formData.company || "Indépendant"
+    );
 
     const newParticipant: Participant = {
       ...formData,
@@ -128,6 +133,27 @@ const RegistrationForm: React.FC<Props> = ({ onComplete }) => {
             <div className="border-l-4 border-brand-gold pl-4 py-1 mb-8">
               <h3 className="text-base font-semibold text-brand-navy uppercase tracking-tight">Profil du Participant</h3>
               <p className="text-[11px] text-slate-400 mt-1">Les champs avec * sont obligatoires</p>
+            </div>
+
+            <div className="space-y-4">
+              <label className="label-text">Civilité *</label>
+              <div className="flex gap-4">
+                {['M.', 'Mme'].map((sal) => (
+                  <label key={sal} className="flex items-center gap-2 cursor-pointer group">
+                    <input 
+                      type="radio" 
+                      name="salutation" 
+                      value={sal} 
+                      checked={formData.salutation === sal}
+                      onChange={handleChange}
+                      className="w-4 h-4 accent-brand-gold"
+                    />
+                    <span className={`text-xs font-bold uppercase tracking-widest ${formData.salutation === sal ? 'text-brand-gold' : 'text-slate-400'}`}>
+                      {sal === 'M.' ? 'Monsieur' : 'Madame'}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

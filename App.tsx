@@ -90,24 +90,29 @@ const App: React.FC = () => {
       <header className="bg-white border-b border-slate-100 sticky top-0 z-50 py-4">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div 
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => setCurrentView(AppView.REGISTRATION)}
           >
-            <Shield className="text-brand-navy w-6 h-6" />
-            <div className="border-l border-slate-200 pl-3">
-              <h1 className="font-brand text-lg text-brand-navy tracking-tight uppercase">ASSIROU</h1>
-              <p className="text-[9px] uppercase tracking-[0.3em] font-medium text-slate-400 -mt-1">Security 2026</p>
+            <div className="relative">
+              <Shield className="text-brand-navy w-10 h-10 group-hover:scale-105 transition-transform" />
+              <Shield className="text-brand-gold w-5 h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" />
+            </div>
+            <div className="border-l-2 border-slate-100 pl-4 flex flex-col justify-center">
+              <h1 className="font-brand text-2xl tracking-tight leading-none font-black flex flex-col">
+                <span className="text-brand-navy">Assirou</span>
+                <span className="text-brand-gold -mt-1">Sécurité</span>
+              </h1>
             </div>
           </div>
           <div className="flex items-center gap-4">
             {isLoading && (
               <div className="flex items-center gap-2 text-slate-300">
                 <Loader2 size={12} className="animate-spin" />
-                <span className="text-[8px] font-bold uppercase tracking-widest">Sync DB...</span>
+                <span className="text-[8px] font-bold uppercase tracking-widest text-slate-400">Sync DB...</span>
               </div>
             )}
             <div className="text-[10px] font-bold text-slate-300 uppercase tracking-widest hidden sm:block">
-              Système d'Accréditation Automatisé
+              Portail Officiel d'Accréditation
             </div>
           </div>
         </div>
@@ -137,9 +142,14 @@ const App: React.FC = () => {
       </main>
 
       <footer className="py-10 border-t border-slate-50 text-center relative group">
-        <p className="text-slate-300 text-[11px] uppercase tracking-widest font-medium">
-          Assirou Sécurité • Excellence & Vigilance
-        </p>
+        <div className="flex flex-col items-center gap-1 opacity-60">
+          <p className="text-brand-navy text-[11px] uppercase tracking-[0.2em] font-black">
+            Assirou Sécurité
+          </p>
+          <p className="text-slate-300 text-[9px] uppercase tracking-widest font-medium">
+            Excellence & Vigilance • Dakar, Sénégal
+          </p>
+        </div>
         
         <button 
           onClick={() => {

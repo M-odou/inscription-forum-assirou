@@ -43,10 +43,9 @@ const TicketSuccess: React.FC<Props> = ({ participant, onNewRegistration }) => {
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       
       // Téléchargement effectif du fichier
-      pdf.save(`Badge_Assirou_2026_${participant.lastName}_${participant.firstName}.pdf`);
+      pdf.save(`Badge_Assirou_Sécurité_${participant.lastName}_${participant.firstName}.pdf`);
     } catch (error) {
       console.error("Erreur lors de la génération du PDF:", error);
-      // Fallback sur l'impression si le script échoue
       window.print();
     } finally {
       setIsGenerating(false);
@@ -59,13 +58,13 @@ const TicketSuccess: React.FC<Props> = ({ participant, onNewRegistration }) => {
         <div className="inline-flex p-4 bg-brand-goldSoft rounded-full mb-6">
           <CheckCircle2 size={40} className="text-brand-gold" />
         </div>
-        <h2 className="font-brand text-4xl text-brand-navy mb-2">Inscription Confirmée</h2>
+        <h2 className="font-brand text-4xl text-brand-navy mb-2 tracking-tight">Inscription Confirmée</h2>
         <div className="space-y-1">
+          <p className="text-brand-navy text-[11px] font-black uppercase tracking-[0.3em]">
+            Assirou Sécurité
+          </p>
           <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.25em]">
             Forum des Métiers de la Sécurité Privée au Sénégal
-          </p>
-          <p className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.15em]">
-            05 mars 2026 • CSC Thiaroye Sur mer • 9H - 17H
           </p>
         </div>
       </div>
@@ -100,8 +99,8 @@ const TicketSuccess: React.FC<Props> = ({ participant, onNewRegistration }) => {
                 <p className="font-mono text-sm font-bold text-brand-navy tracking-widest">{participant.ticketId}</p>
               </div>
               <div className="text-right">
-                <h4 className="text-[8px] font-black text-slate-300 uppercase tracking-[0.3em]">FORUM 2026</h4>
-                <p className="text-[9px] font-bold text-brand-gold uppercase tracking-widest">SÉCURITÉ PRIVÉE</p>
+                <h4 className="text-[9px] font-black text-brand-navy uppercase tracking-widest leading-none">Assirou</h4>
+                <p className="text-[9px] font-black text-brand-gold uppercase tracking-widest leading-none">Sécurité</p>
               </div>
             </div>
 
@@ -144,9 +143,9 @@ const TicketSuccess: React.FC<Props> = ({ participant, onNewRegistration }) => {
                   <ShieldCheck size={16} className="text-brand-gold" />
                   <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-500">ACCÈS SÉCURISÉ</span>
                 </div>
-                <div className="text-[8px] font-bold text-slate-300 uppercase tracking-widest text-right">
-                  <span>ASSIROU</span><br/>
-                  <span>SÉCURITÉ</span>
+                <div className="text-right">
+                  <span className="text-[8px] font-black uppercase tracking-widest text-brand-navy">Assirou</span><br/>
+                  <span className="text-[8px] font-black uppercase tracking-widest text-brand-gold">Sécurité</span>
                 </div>
               </div>
             </div>
